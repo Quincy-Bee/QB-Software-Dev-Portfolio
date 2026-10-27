@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quincy Bee — Graphic Design</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <a href="/" class="logo">QB</a>
+
+        <nav class="nav" aria-label="Main navigation">
+            <ul>
+                <li class="dropdown">
+                    <a href="index.html">Work</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Software Dev</a></li>
+                        <li><a href="3d-design.html">Product Animation</a></li>
+                        <li><a href="graphic-design.html">Graphic Design</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+            <p class="eyebrow">SOFTWARE ENGINEER / DESIGNER</p>
+
+            <h1>
+                Identity.<br>
+                Stories.<br>
+                Impact.
+            </h1>
+
+            <p class="hero-text">
+                Brand identity, visual design, and
+                creative concepts.
+            </p>
+        </section>
+
+        <!-- Selected 3D Projects -->
+        <section id="work" class="work">
+
+            <div class="section-header">
+                <p class="eyebrow">Email Newsletter</p>
+                <p class="project-count">01 Projects</p>
+            </div>
+
+            <!-- Project 1: Fenty Beauty -->
+            <article class="project-card" id="beauty-render">
+
+                <div class="project-gallery">
+
+                    <a href="/images/newsletter.gif" class="project-image lightbox-trigger">
+                        <img src="/images/newsletter.gif" alt="Fenty Beauty animated product render" loading="lazy">
+                    </a>
+
+                </div>
+
+                <div class="project-info">
+                    <div>
+                        <h2>BERRICLE.COM NEWSLETTER</h2>
+                        <p>GRAPHIC DESIGN</p>
+
+                        <div class="project-details">
+                            <p>
+                                An email newsletter design concept exploring
+                                jewelry, brand identity, typography, and
+                                visual storytelling for Berricle’s jewelry collections.
+                            </p>
+                        </div>
+                    </div>
+
+                    <span>01</span>
+                </div>
+
+            </article>
+
+            </div>
+
+            </article>
+
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about">
+
+            <p class="eyebrow">MY APPROACH</p>
+
+            <div class="about-content">
+
+                <h2>Design beyond the screen.</h2>
+
+                <p>
+                    I bring my background in graphic design and digital development into visual communication, exploring
+                    how typography, color, layout, and imagery work together to convey an idea.
+
+                    From brand identities to digital experiences, I create visual concepts that combine creative
+                    exploration with thoughtful design, clear communication, and a strong sense of composition.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Tools and Skills -->
+        <section class="skills">
+
+            <p class="eyebrow">TOOLS &amp; SKILLS</p>
+
+            <div class="skills-grid">
+                <span>Blender</span>
+                <span>3D Modeling</span>
+                <span>Product Visualization</span>
+                <span>Lighting</span>
+                <span>Materials</span>
+                <span>Texturing</span>
+                <span>Composition</span>
+                <span>Visual Design</span>
+            </div>
+
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact">
+
+            <p class="eyebrow">HAVE A PROJECT IN MIND?</p>
+
+            <h2>Let's create something.</h2>
+
+            <a href="mailto:quincybee@icloud.com">
+                Get in touch
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>© 2026 Quincy Bee</p>
+
+        <div>
+            <a href="https://github.com/Quincy-Bee">GitHub</a>
+
+            <a href="https://www.linkedin.com/in/quincy-bee-a83732254/">
+                LinkedIn
+            </a>
+        </div>
+
+    </footer>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-label="Expanded project image">
+
+        <button class="lightbox-close" type="button" aria-label="Close image">
+            &times;
+        </button>
+
+        <img src="" alt="" id="lightbox-image">
+
+    </div>
+
+    <!-- Existing JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Lightbox Functionality -->
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        const closeButton = document.querySelector(".lightbox-close");
+        const triggers = document.querySelectorAll(".lightbox-trigger");
+
+        let previousFocus = null;
+
+        function openLightbox(event) {
+            event.preventDefault();
+
+            const trigger = event.currentTarget;
+            const image = trigger.querySelector("img");
+
+            if (!image) return;
+
+            previousFocus = trigger;
+
+            // Open the image belonging to the clicked thumbnail.
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+
+            lightbox.classList.add("active");
+            lightbox.setAttribute("aria-hidden", "false");
+
+            document.body.style.overflow = "hidden";
+            closeButton.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            lightbox.setAttribute("aria-hidden", "true");
+
+            lightboxImage.src = "";
+            document.body.style.overflow = "";
+
+            if (previousFocus) {
+                previousFocus.focus();
+                previousFocus = null;
+            }
+        }
+
+        triggers.forEach((trigger) => {
+            trigger.addEventListener("click", openLightbox);
+        });
+
+        closeButton.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("active")
+            ) {
+                closeLightbox();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
