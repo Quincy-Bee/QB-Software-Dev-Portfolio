@@ -1,3 +1,4 @@
+
 /* =========================================
    RESET
 ========================================= */
@@ -186,7 +187,10 @@ main {
     overflow: hidden;
 }
 
-/* Uniform image gallery */
+
+/* =========================================
+   PROJECT GALLERY
+========================================= */
 
 .project-gallery {
     display: grid;
@@ -195,32 +199,39 @@ main {
     width: 100%;
 }
 
-/* Each thumbnail has identical proportions */
+
+/* =========================================
+   PROJECT IMAGES
+========================================= */
 
 .project-image {
     display: block;
     position: relative;
-    width: 100%;
-    min-width: 0;
-    aspect-ratio: 4 / 3;
+
+    width: 75%;
+    max-width: 850px;
+
+    aspect-ratio: 16 / 9;
+
     overflow: hidden;
     background: #e5e5e1;
     border-radius: 4px;
 }
-
-/* Keep images inside their containers */
 
 .project-image img {
     display: block;
     width: 100%;
     height: 100%;
     max-width: 100%;
+
     object-fit: cover;
     object-position: center;
+
     transition:
         transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1),
         opacity 0.4s ease;
 }
+
 
 /* Subtle hover effect */
 
@@ -441,7 +452,8 @@ main {
     }
 
     .project-image {
-        aspect-ratio: 4 / 3;
+        width: 85%;
+        aspect-ratio: 16 / 9;
     }
 
     .about {
@@ -515,7 +527,8 @@ main {
     }
 
     .project-image {
-        aspect-ratio: 4 / 3;
+        width: 100%;
+        aspect-ratio: 16 / 9;
     }
 
     .project-info {
